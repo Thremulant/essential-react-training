@@ -15,6 +15,15 @@ export const StateSolution = () => {
     const [input, setInput] = useState<string>('Hello there...');
     const [inputControl, setInputControl] = useState<boolean>(false);
 
+    useEffect(() => {
+        if (input.length > 20) {
+            setInputControl(true)
+        } else {
+            setInputControl(false)
+        }
+    }, [input])
+
+    const memoConst = useMemo(() => { return <AddCount text={input} setText={setInput} /> }, [inputControl])
 
     return (
         <MainContainer title='2. State'>
@@ -26,7 +35,7 @@ export const StateSolution = () => {
                     <button className='btn btn-primary' onClick={() => setInput('')}>Clear the input</button>
                 </div>
             </div>
-            <AddCount text={input} setText={setInput} />
+            {memoConst}
             <AddCountClass text={input} />
             <div className='row mb-5'>
                 <Link to='/state'>Return</Link>
