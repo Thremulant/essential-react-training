@@ -98,7 +98,7 @@ export const EffectsSolution = () => {
             <section>
                 <div className='row mb-5'>
                     <h5>Effect for one hook</h5>
-                    <h1 className='text-center'>{counterText}</h1>
+                    <h1 className='text-center'>{counter}{counterText !== '' ? `: ${counterText}` : ''}</h1>
                     <button className='btn btn-primary col-6 mx-auto' onClick={() => setCounter(counter + 1)} disabled={counter >= 30}>Trigger COUNT render</button>
                 </div>
             </section>

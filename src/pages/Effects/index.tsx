@@ -26,15 +26,7 @@ export const EffectsPage = () => {
 
     // Triggered once, after the first render
     useEffect(() => {
-        let loadingTimer: NodeJS.Timeout;
 
-        if (isLoading) {
-            loadingTimer = setInterval(() => {
-                setIsLoading(false);
-            }, 2000)
-        }
-
-        return () => clearInterval(loadingTimer);
     }, [])
 
     // Triggered every time the variable is updated
@@ -65,7 +57,7 @@ export const EffectsPage = () => {
                     </div>
                 </div>
                 <div className='row mb-5'>
-                    <Link to='/effects'>Return</Link>
+                    <Link to='/effects/solution'>Solution</Link>
                 </div>
             </MainContainer>
         )
@@ -76,7 +68,7 @@ export const EffectsPage = () => {
             <section>
                 <div className='row mb-5'>
                     <h5>Effect for one hook</h5>
-                    <h1 className='text-center'>{counterText}</h1>
+                    <h1 className='text-center'>{counter}{counterText !== '' ? `: ${counterText}` : ''}</h1>
                     <button className='btn btn-primary col-6 mx-auto' onClick={() => setCounter(counter + 1)} disabled={counter >= 30}>Trigger COUNT render</button>
                 </div>
             </section>
@@ -96,7 +88,7 @@ export const EffectsPage = () => {
                 </div>
             </section>
             <div className='row mb-5'>
-                <Link to='/effects'>Return</Link>
+                <Link to='/effects/solution'>Solution</Link>
             </div>
         </MainContainer >
     )
